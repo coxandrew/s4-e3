@@ -17,17 +17,39 @@
 require "date"
 
 module Agile
+  class Iteration
+    include Enumerable
+
+    def initialize(stories = [])
+      @stories = stories
+    end
+
+    def stories
+      @stories.sort
+    end
+
+    def velocity
+      @stories.inject(0) { |sum, story| sum + story.size }
+    end
+  end
+
   class Story
-    attr_reader :description, :icon, :size
+    attr_reader :description, :icon, :size, :position
+    attr_writer :position
 
     def initialize(options = {})
-      @description = options[:description]
-      @icon = options[:icon] || "star.png"
-      @size = options[:size] || 0
+      @description = options[:description] || "No description"
+      @icon =        options[:icon]        || "star.png"
+      @size =        options[:size]        || 0
+      @position =    options[:position]    || 0
       on_story_create(options)
     end
 
     def on_story_create(options)
+    end
+
+    def <=>(b)
+      self.position <=> b.position
     end
   end
 
@@ -64,5 +86,29 @@ describe Agile::Release do
 
   it "has a size of 0" do
     release.size.should == 0
+  end
+end
+
+describe Agile::Iteration do
+  let(:story_1) { Agile::Story.new(:description => "quatro", :size => 2) }
+  let(:story_2) { Agile::Story.new(:description => "uno", :size => 1) }
+  let(:story_3) { Agile::Story.new(:description => "dos", :size => 1) }
+  let(:release) { Agile::Release.new(:description => "RMU Core Skills") }
+  let(:iteration) { Agile::Iteration.new([story_1, story_2, story_3, release]) }
+
+  it "lists stories and releases sorted by position" do
+    story_1.position = 4
+    story_2.position = 1
+    story_3.position = 2
+    release.position = 3
+
+    iteration.stories[0].should == story_2
+    iteration.stories[1].should == story_3
+    iteration.stories[2].should == release
+    iteration.stories[3].should == story_1
+  end
+
+  it "calculates velocity from a list of stories" do
+    iteration.velocity.should == 4
   end
 end
