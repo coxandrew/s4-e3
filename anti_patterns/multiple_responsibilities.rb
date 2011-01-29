@@ -20,10 +20,10 @@ class Story
 
   def t_shirt_size
     case size
-    when 1 then "XS"
-    when 2 then "S"
-    when 4 then "M"
-    when 8 then "L"
+    when 1 then :XS
+    when 2 then :S
+    when 4 then :M
+    when 8 then :L
     end
   end
 

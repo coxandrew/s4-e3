@@ -6,8 +6,9 @@
 #
 # This example violates Dependency Inversion because it uses a StoryPrinter
 # object within a public method rather than defining the StoryPrinter
-# object in the initialize method (see:
-# solid_principles/dependency_inversion_principle.rb)
+# object in the initialize method. See a better way here:
+#
+#   solid_principles/dependency_inversion_principle.rb
 #
 
 class Story
