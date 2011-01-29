@@ -5,7 +5,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 # This module separates concerns into a Project, Iteration and Story. The
-# Project has a velocity and stories, but does not need to know how to
+# Project has both velocity and stories, but does not need to know how to
 # get either one by itself. It relies on the Iteration class to handle the
 # details.
 #
