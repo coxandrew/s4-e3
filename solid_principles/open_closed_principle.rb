@@ -6,7 +6,7 @@
 #
 # It is open for extension in the ordering of stories in an iteration. You
 # can change how stories are ordered simply by overriding the <=> method
-# in the Story class.
+# in the Story class, as seen in the AlphaStory class.
 #
 # It is closed for modification in that you should not need to modify how
 # a Story determines its icon (see anti_patterns/closed_for_extension.rb
@@ -51,6 +51,12 @@ module Agile
 
     def deadline
       @deadline unless @deadline.nil?
+    end
+  end
+
+  class AlphaStory < Story
+    def <=>(b)
+      description <=> b.description
     end
   end
 end
@@ -108,5 +114,17 @@ describe Agile::Iteration do
     stories[0].description.should == "alpha"
     stories[1].description.should == "theta"
     stories[2].description.should == "beta"
+  end
+
+  it "returns a list of 'alpha' stories in alpha order" do
+    upcoming = Agile::Iteration.new([
+      Agile::AlphaStory.new(:description => "alpha"),
+      Agile::AlphaStory.new(:description => "theta"),
+      Agile::AlphaStory.new(:description => "beta")
+    ])
+    stories = upcoming.stories
+    stories[0].description.should == "alpha"
+    stories[1].description.should == "beta"
+    stories[2].description.should == "theta"
   end
 end
