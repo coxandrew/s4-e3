@@ -39,6 +39,7 @@ module Agile
     attr_reader :deadline
 
     def initialize(options = {})
+      super
       @deadline = options[:deadline]
     end
 
@@ -74,6 +75,14 @@ describe Agile do
     end
 
     context "release" do
+      it "has a release icon" do
+        release = Release.new(
+          :icon => "release.png",
+          :deadline => Date.parse('2011-01-31')
+        )
+        release.icon.should == "release.png"
+      end
+
       it "can have a deadline" do
         expected_deadline = Date.parse('2011-01-31')
         release = Release.new(
