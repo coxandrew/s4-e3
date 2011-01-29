@@ -41,10 +41,20 @@ module Agile
       end
     end
   end
+
+  class Release < Story
+    def icon
+      case @type
+      when "bug" then "bug.png"
+      when "chore" then "gear.png"
+      when "release" then "release.png"
+      else "star.png"
+      end
+    end
+  end
 end
 
-
-describe Agile::Story do
+describe Agile do
   context "default story" do
     it "has a star icon" do
       story = Agile::Story.new
@@ -56,6 +66,13 @@ describe Agile::Story do
     it "has a gear icon" do
       chore = Agile::Story.new(:type => "chore")
       chore.icon.should == "gear.png"
+    end
+  end
+
+  context "release" do
+    it "has a release icon" do
+      release = Agile::Release.new(:type => "release")
+      release.icon.should == "release.png"
     end
   end
 end
