@@ -24,14 +24,19 @@ module Agile
       @description = options[:description]
       @icon = options[:icon] || "star.png"
       @size = options[:size] || 0
+      on_story_create(options)
+    end
+
+    def on_story_create(options)
     end
   end
 
   class Release < Story
     attr_reader :deadline
 
-    def initialize(options = {})
-      super(options.merge(:icon => "release.png", :size => 0))
+    def on_story_create(options)
+      @icon = "release.png"
+      @size = 0
       @deadline = options[:deadline]
     end
 

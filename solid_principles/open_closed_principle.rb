@@ -31,6 +31,10 @@ module Agile
     def initialize(options = {})
       @description = options[:description]
       @icon = options[:icon] || "star.png"
+      on_story_create(options)
+    end
+
+    def on_story_create(options)
     end
 
     def <=>(b)
@@ -41,8 +45,7 @@ module Agile
   class Release < Story
     attr_reader :deadline
 
-    def initialize(options = {})
-      super
+    def on_story_create(options)
       @deadline = options[:deadline]
     end
 
