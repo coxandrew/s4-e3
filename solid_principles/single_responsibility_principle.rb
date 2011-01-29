@@ -45,9 +45,7 @@ module Agile
 end
 
 describe Agile do
-  include Agile
-
-  let(:story) { Story.new(:description => "Example story", :size => 4) }
+  let(:story) { Agile::Story.new(:description => "Example story", :size => 4) }
 
   describe Agile::Story do
     it "has a description and size" do
@@ -58,7 +56,7 @@ describe Agile do
 
   describe Agile::StoryPrinter do
     it "prints description with size as a T-shirt" do
-      printer = StoryPrinter.new(story)
+      printer = Agile::StoryPrinter.new(story)
       printer.print.should == "Example story (M)"
     end
   end

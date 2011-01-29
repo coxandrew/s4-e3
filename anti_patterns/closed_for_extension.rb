@@ -43,22 +43,19 @@ module Agile
   end
 end
 
-describe Agile do
-  include Agile
 
-  describe Agile::Story do
-    context "default story" do
-      it "has a star icon" do
-        story = Story.new
-        story.icon.should == "star.png"
-      end
+describe Agile::Story do
+  context "default story" do
+    it "has a star icon" do
+      story = Agile::Story.new
+      story.icon.should == "star.png"
     end
+  end
 
-    context "chore" do
-      it "has a gear icon" do
-        chore = Story.new(:type => "chore")
-        chore.icon.should == "gear.png"
-      end
+  context "chore" do
+    it "has a gear icon" do
+      chore = Agile::Story.new(:type => "chore")
+      chore.icon.should == "gear.png"
     end
   end
 end

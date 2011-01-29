@@ -52,62 +52,58 @@ module Agile
   end
 end
 
-describe Agile do
-  include Agile
 
-  describe Agile::Story do
-
-    context "default story" do
-      it "has a description" do
-        expected_description = "Write an example of Open Closed"
-        story = Story.new(:description => expected_description)
-        story.description.should == expected_description
-      end
-
-      it "has a star icon" do
-        story = Story.new
-        story.icon.should == "star.png"
-      end
+describe Agile::Story do
+  context "default story" do
+    it "has a description" do
+      expected_description = "Write an example of Open Closed"
+      story = Agile::Story.new(:description => expected_description)
+      story.description.should == expected_description
     end
 
-    context "chore" do
-      it "has a gear icon" do
-        chore = Story.new(:icon => "gear.png")
-        chore.icon.should == "gear.png"
-      end
-    end
-
-    context "release" do
-      it "has a release icon" do
-        release = Release.new(
-          :icon => "release.png",
-          :deadline => Date.parse('2011-01-31')
-        )
-        release.icon.should == "release.png"
-      end
-
-      it "can have a deadline" do
-        expected_deadline = Date.parse('2011-01-31')
-        release = Release.new(
-          :icon => "release.png",
-          :deadline => expected_deadline
-        )
-        release.deadline.should == expected_deadline
-      end
+    it "has a star icon" do
+      story = Agile::Story.new
+      story.icon.should == "star.png"
     end
   end
 
-  describe Agile::Iteration do
-    it "returns a list of stories in the order they were added" do
-      upcoming = Iteration.new([
-        Story.new(:description => "alpha"),
-        Story.new(:description => "theta"),
-        Story.new(:description => "beta")
-      ])
-      stories = upcoming.stories
-      stories[0].description.should == "alpha"
-      stories[1].description.should == "theta"
-      stories[2].description.should == "beta"
+  context "chore" do
+    it "has a gear icon" do
+      chore = Agile::Story.new(:icon => "gear.png")
+      chore.icon.should == "gear.png"
     end
+  end
+
+  context "release" do
+    it "has a release icon" do
+      release = Agile::Release.new(
+        :icon => "release.png",
+        :deadline => Date.parse('2011-01-31')
+      )
+      release.icon.should == "release.png"
+    end
+
+    it "can have a deadline" do
+      expected_deadline = Date.parse('2011-01-31')
+      release = Agile::Release.new(
+        :icon => "release.png",
+        :deadline => expected_deadline
+      )
+      release.deadline.should == expected_deadline
+    end
+  end
+end
+
+describe Agile::Iteration do
+  it "returns a list of stories in the order they were added" do
+    upcoming = Agile::Iteration.new([
+      Agile::Story.new(:description => "alpha"),
+      Agile::Story.new(:description => "theta"),
+      Agile::Story.new(:description => "beta")
+    ])
+    stories = upcoming.stories
+    stories[0].description.should == "alpha"
+    stories[1].description.should == "theta"
+    stories[2].description.should == "beta"
   end
 end

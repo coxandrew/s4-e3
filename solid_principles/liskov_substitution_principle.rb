@@ -41,27 +41,23 @@ module Agile
   end
 end
 
-describe Agile do
-  include Agile
+describe Agile::Release do
+  let(:release) {
+    Agile::Release.new(
+      :description => "RMU Checkpoint #3",
+      :deadline => Date.parse("2011-01-31")
+    )
+  }
 
-  describe Agile::Release do
-    let(:release) {
-      Release.new(
-        :description => "RMU Checkpoint #3",
-        :deadline => Date.parse("2011-01-31")
-      )
-    }
+  it "has a deadline" do
+    release.deadline.should == Date.parse("2011-01-31")
+  end
 
-    it "has a deadline" do
-      release.deadline.should == Date.parse("2011-01-31")
-    end
+  it "has a release icon" do
+    release.icon.should == "release.png"
+  end
 
-    it "has a release icon" do
-      release.icon.should == "release.png"
-    end
-
-    it "has a size of 0" do
-      release.size.should == 0
-    end
+  it "has a size of 0" do
+    release.size.should == 0
   end
 end
