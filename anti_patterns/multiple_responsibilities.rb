@@ -1,5 +1,8 @@
-# The Single Responsibility Principle states that there should never be more
-# than one reason for a class to change.
+# The Single Responsibility Principle:
+#
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# There should never be more than one reason for a class to change.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 # In this case, the Story class is both handling storing details about a Story
 # as well as printing it. We may want to change the output of the Story class

@@ -1,5 +1,8 @@
-# The Single Responsibility Principle states that there should never be more
-# than one reason for a class to change.
+# The Single Responsibility Principle:
+#
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# There should never be more than one reason for a class to change.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 # This module separates Story into 2 classes:
 #

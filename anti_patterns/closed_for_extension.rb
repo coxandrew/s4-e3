@@ -1,5 +1,8 @@
-# The Open Closed principle states that a module should be open for extension
-# but closed for modification.
+# The Open Closed Principle
+#
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# A module should be open for extension but closed for modification.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 # The following implementation of a Story class simply prints the icon for each
 # type of story.

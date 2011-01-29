@@ -1,5 +1,8 @@
-# The Open Closed principle states that a module should be open for extension
-# but closed for modification.
+# The Open Closed Principle:
+#
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# A module should be open for extension but closed for modification.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 # It is open for extension in the ordering of stories in an iteration. You
 # can change how stories are ordered simply by overriding the <=> method
